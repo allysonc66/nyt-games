@@ -1,0 +1,99 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.word {
+  width: 100px;
+  height: 50px;
+  margin: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  color: black;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s;
+  border-radius: 15px; /* Rounded edges for words */
+}
+
+.word.selected {
+  background-color: darkgray;
+  color: white;
+}
+
+.word.blue {
+  background-color: lightblue;
+}
+
+.word.yellow {
+  background-color: lightyellow;
+}
+
+.word.purple {
+  background-color: lightpurple;
+}
+
+.word.green {
+  background-color: lightgreen;
+}
+
+.gray {
+  background-color: #ddd;
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%, 75% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Answer Key Styling */
+.answer-key {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.answer-bubble {
+  padding: 10px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  width: 100px;
+}
+
+.answer-bubble.blue {
+  background-color: lightblue;
+}
+
+.answer-bubble.yellow {
+  background-color: lightyellow;
+  color: black;
+}
+
+.answer-bubble.purple {
+  background-color: lightpurple;
+}
+
+.answer-bubble.green {
+  background-color: lightgreen;
+}
