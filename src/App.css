@@ -97,3 +97,63 @@
 .answer-bubble.green {
   background-color: lightgreen;
 }
+
+.App {
+  display: flex;
+}
+
+.navbar {
+  position: fixed; /* Fix the navbar to the left */
+  left: 0; /* Align to the left */
+  top: 0; /* Align to the top */
+  width: 200px; /* Set a width for the navbar */
+  background-color: #fff; /* Background color */
+  height: 100%; /* Full height */
+  padding: 20px; /* Add some padding */
+}
+
+.navbar ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+  display: flex; /* Change this to block or add flex-direction */
+  flex-direction: column; /* Add this line for vertical stacking */
+}
+
+.navbar li {
+  margin: 10px 0; /* Space between items */
+}
+
+/* Reset traditional link styles */
+.navbar ul li a {
+  text-decoration: none;
+  color: black;
+  display: block; /* Ensures the a tag takes full space of li */
+  padding: 10px 15px;
+}
+
+.navbar ul li {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.navbar ul li:hover,
+.navbar ul li.active {
+  background-color: #e0e0e0; /* Light gray color on hover or click */
+}
+
+/* Optional: Remove default margin/padding for a more compact menu */
+.navbar ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.navbar ul li {
+  margin: 5px;
+}
+
+
+.game-container {
+  flex-grow: 1; /* This will take the remaining space */
+  padding: 20px;
+}
