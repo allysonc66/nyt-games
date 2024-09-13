@@ -78,7 +78,7 @@ const Connections: React.FC = () => {
 
   return (
     <div className="App">
-      <h1>Connections Game</h1>
+      <h1>Connections</h1>
       <div className="word-grid">
         {shuffledWords.map((word) => (
           <button

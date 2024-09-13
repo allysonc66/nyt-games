@@ -1,0 +1,66 @@
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.key {
+  width: 40px;
+  background-color: var(--color-key);
+  border-radius: 5px;
+  color: var(--color-key-text);
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: 'Lexend Deca';
+  font-family: 'Poppins';
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  margin: 0 0.2rem;
+}
+
+.absent {
+  background-color: var(--color-absent);
+  color: #fff;
+}
+
+.present {
+  background-color: var(--color-present);
+  color: #fff;
+}
+
+.correct {
+  background-color: var(--color-correct);
+  color: #fff;
+}
+
+.action {
+  background-color: var(--color-key-secondary);
+  color: var(--color-background);
+  font-size: 0.9rem;
+  width: auto;
+}
+
+@media screen and (max-width: 480px) {
+  .keyboard {
+    margin: 0;
+  }
+
+  .key {
+    width: 30px;
+    font-size: 1rem;
+  }
+
+  .action {
+    width: auto;
+    font-size: 0.7rem;
+  }
+}
