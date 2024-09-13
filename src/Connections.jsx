@@ -1,46 +1,33 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 
-// Define a word type with text, category, and display name for the category
-type Word = {
-  text: string;
-  category: string;
-};
-
-type Category = {
-  name: string;
-  words: string[];
-}
-
-const Connections: React.FC = () => {
+const Connections = () => {
   // Define 4 categories with their respective words and labels
-  const categories: { [key: string]: Category } = {
+  const categories = {
     blue: { name: "U2 Songs", words: ["Desire", "Bad", "One", "Invisible"] },
     yellow: { name: "Circle Geometry Terms", words: ["Chord", "Arc", "Tangent", "Area"] },
     green: { name: "Words that mean 'Teach'", words: ["Illuminate", "Verse", "Coach", "Guide"] },
     purple: { name: "Palindromes", words: ["Noon", "Mom", "Civic", "Level"] },
   };
 
-  type CategoryKey = keyof typeof categories;
-
 
   // Create a list of words by flattening the categories
-  const words: Word[] = Object.entries(categories).flatMap(([category, { words }]) =>
+  const words = Object.entries(categories).flatMap(([category, { words }]) =>
     words.map((word) => ({ text: word, category }))
   );
 
   // Shuffle words for randomness
-  const shuffleArray = (array: Word[]) => [...array].sort(() => Math.random() - 0.5);
+  const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
 
   // State for shuffled words, selected words, correct groups, and the answer key
-  const [shuffledWords, setShuffledWords] = useState<Word[]>(shuffleArray(words));
-  const [selectedWords, setSelectedWords] = useState<Word[]>([]);
-  const [correctGroups, setCorrectGroups] = useState<Word[]>([]);
-  const [answerKey, setAnswerKey] = useState<CategoryKey[]>([]); // Change type to CategoryKey[]
+  const [shuffledWords, setShuffledWords] = useState(shuffleArray(words));
+  const [selectedWords, setSelectedWords] = useState([]);
+  const [correctGroups, setCorrectGroups] = useState([]);
+  const [answerKey, setAnswerKey] = useState([]); // Change type to CategoryKey[]
   const [shake, setShake] = useState(false);
 
   // Handle word selection (toggle on/off)
-  const handleWordClick = (word: Word) => {
+  const handleWordClick = (word) => {
     if (correctGroups.includes(word)) return;
     if (selectedWords.includes(word)) {
       setSelectedWords(selectedWords.filter((w) => w !== word));
@@ -104,7 +91,7 @@ const Connections: React.FC = () => {
       </div>
       {/* Answer Key Section */}
       <div className="answer-key">
-        {answerKey.map((category: CategoryKey) => ( // Specify the type for category
+        {answerKey.map((category) => ( // Specify the type for category
   <div key={category} className={`answer-bubble ${category}`}>
     {categories[category].name} {/* Show the category name in the answer key */}
   </div>

@@ -1,6 +1,4 @@
-import React from "react";
-
-const Strands: React.FC = () => {
+const Strands = () => {
   return <div>Strands Game Placeholder</div>;
 };
 

@@ -1,6 +1,4 @@
-import React from "react";
-
-const TheMini: React.FC = () => {
+const TheMini = () => {
   return <div>The Mini Game Placeholder</div>;
 };
 

@@ -106,7 +106,7 @@ function Wordle() {
     setHardMode(!isHardMode);
   };
 
-  const handleKeyDown = (letter: string) =>
+  const handleKeyDown = (letter) =>
     currentGuess.length < MAX_WORD_LENGTH &&
     !isGameWon &&
     setCurrentGuess(currentGuess + letter);

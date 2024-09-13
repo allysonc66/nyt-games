@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { FaLink, FaBolt, FaTable, FaQuoteLeft } from "react-icons/fa";
 import "./App.css";
@@ -7,7 +6,7 @@ import Strands from "./Strands"; // Placeholder for Strands game
 import TheMini from "./TheMini"; // Placeholder for The Mini game
 import Wordle from "./Wordle"; // Placeholder for Wordle game
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <Router>
       <div className="App">
