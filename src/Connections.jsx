@@ -7,6 +7,7 @@ import InfoModal from "./components/InfoModal";
 import StatsModal from "./components/StatsModal";
 import SettingModal from "./components/SettingModal";
 import { addStatsForCompletedGame } from "./lib/words";
+import BirthdayHeader from "./components/BirthdayHeader";
 
 const MAX_GUESSES = 4;
 
@@ -40,6 +41,7 @@ const Connections = () => {
     totalGames: 0,
     successRate: 0,
   });
+  const [alert, setAlert] = useState({ isVisible: false, message: '', className: '' });
   const [shuffledWords, setShuffledWords] = useState(shuffleArray(words));
   const [selectedWords, setSelectedWords] = useState([]);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
@@ -56,7 +58,12 @@ const Connections = () => {
   const [guesses, setGuesses] = useLocalStorage('guessesConnections', []);
   let showAlert = useAlert();
   if (!showAlert) {
-    showAlert = false
+    showAlert = {
+      isVisible: false,
+      message: '',
+      duration: 200,
+      onClose: () => { },
+    }
   } else {
     showAlert = showAlert.showAlert
   }
@@ -87,30 +94,45 @@ const Connections = () => {
         setSelectedWords([]);
         setStats(addStatsForCompletedGame(stats, guesses.length));
       } else {
-        // Trigger shake animation and clear selection
-        setGuesses(guesses + 1);
-        setShake(true);
-        setTimeout(() => setShake(false), 500);
+        // Check if the guess has already been made
+        const guessTexts = selectedWords.map(word => word.text).sort().join(',');
+        const hasGuessedBefore = guesses.some(
+          guess => guess.map(word => word.text).sort().join(',') === guessTexts
+        );
+
+        if (hasGuessedBefore) {
+          // show alert
+          setAlert({ isVisible: true, message: 'Already guessed!', className: 'visible' });
+          setTimeout(() => {
+            setAlert((prev) => ({ ...prev, className: '' }));
+            setTimeout(() => setAlert({ isVisible: false, message: '', className: '' }), 500);
+          }, 2000);
+        } else {
+          // Add the incorrect guess to the guesses array
+          setShake(true);
+          setGuesses([...guesses, selectedWords]);
+          setTimeout(() => setShake(false), 500);
+        }
       }
 
-      if (guesses >= MAX_GUESSES) {
+      if (guesses.length >= MAX_GUESSES * 4) {
         setStats(addStatsForCompletedGame(stats, guesses.length));
       }
     }
   };
 
   useEffect(() => {
-    if (correctGroups.length === 4) {
+    if (correctGroups.length === 16) {
       setIsGameWon(true);
       setTimeout(() => setIsStatsModalOpen(true), 1000);
     }
 
-    if (guesses >= MAX_GUESSES) {
+    if (guesses.length >= MAX_GUESSES) {
       setIsGameLost(true);
       setTimeout(() => setIsStatsModalOpen(true), 1000);
     }
     // eslint-disable-next-line
-  }, correctGroups);
+  }, [correctGroups, guesses]);
 
   useEffect(() => {
     if (isDarkMode) document.body.setAttribute('data-theme', 'dark');
@@ -136,6 +158,17 @@ const Connections = () => {
     setShuffledWords(shuffleArray(shuffledWords));
   };
 
+  // Handle restart
+  const handleRestart = () => {
+    setShuffledWords(shuffleArray(words));
+    setSelectedWords([]);
+    setCorrectGroups([]);
+    setAnswerKey([]);
+    setGuesses([]);
+    setIsGameLost(false);
+    setIsGameWon(false);
+  };
+
   return (
     <div className="App">
       <Header
@@ -144,6 +177,7 @@ const Connections = () => {
         setIsSettingsModalOpen={setIsSettingsModalOpen}
         gameName="CONNECTIONS"
       />
+      <BirthdayHeader />
       <InfoModal
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
@@ -155,20 +189,25 @@ const Connections = () => {
             key={word.text}
             onClick={() => handleWordClick(word)}
             className={`word ${correctGroups.some(item => item.text === word.text)
-                ? word.category
-                : selectedWords.includes(word)
-                  ? "selected"
-                  : "gray"
+              ? word.category
+              : selectedWords.includes(word)
+                ? "selected"
+                : "gray"
               } ${shake && selectedWords.includes(word) ? "shake" : ""}`}
           >
             {word.text}
           </button>
         ))}
       </div>
+      {alert.isVisible && (
+        <div className={`alert ${alert.className}`}>
+          <p>{alert.message}</p>
+        </div>
+      )}
       <div className="mistakes-remaining">
-        Mistakes Remaining:  
+        Mistakes Remaining:
         <div className="dots" style={{ display: 'inline-flex', gap: '5px' }}>
-          {Array.from({ length: MAX_GUESSES - guesses }, (_, index) => (
+          {Array.from({ length: MAX_GUESSES - guesses.length }, (_, index) => (
             <span key={index} className="dot"></span>
           ))}
         </div>
@@ -187,6 +226,12 @@ const Connections = () => {
           </div>
         ))}
       </div>
+      {isGameLost && (
+        <div className="game-over">
+          <h2>Try again next time</h2>
+          <button onClick={handleRestart}>Restart Game</button>
+        </div>
+      )}
       <SettingModal
         isOpen={isSettingsModalOpen}
         onClose={() => setIsSettingsModalOpen(false)}
@@ -205,8 +250,8 @@ const Connections = () => {
         isGameWon={isGameWon}
         isGameLost={isGameLost}
         isHardMode={false}
-        guesses={guesses}
-        showAlert={showAlert.showAlert}
+        guesses={guesses.length}
+        showAlert={false}
       />
     </div>
   );

@@ -64,6 +64,7 @@
   margin-top: 20px;
   display: flex;
   gap: 10px;
+  font-size: large;
 }
 
 .mistakes-remaining {
@@ -87,7 +88,27 @@
 .controls button {
   background-color: white;
   color: black;
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  font-size: large;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.alert {
+  background-color: rgb(255, 144, 144);
+  color: rgb(0, 0, 0);
+  border: 1px solid #4e4e4e;
+  padding: 5px 5px;
+  font-size: medium;
+  border-radius: 5px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.alert.visible {
+  opacity: 1;
 }
 
 /* Answer Key Styling */
@@ -124,60 +145,71 @@
   background-color: lightgreen;
 }
 
-.App {
-  display: flex;
-}
-
 .navbar {
   position: fixed; /* Fix the navbar to the left */
-  left: 0; /* Align to the left */
   top: 0; /* Align to the top */
-  width: 200px; /* Set a width for the navbar */
-  background-color: #fff; /* Background color */
+  left: -250px; /* Hide the navbar by default */
+  width: 250px; /* Set a width for the navbar */
+  background-color: #333; /* Background color */
   height: 100%; /* Full height */
-  padding: 20px; /* Add some padding */
+  padding-top: 60px; /* Add some padding */
+  transition: left 0.3s ease; /* Smooth transition */
+}
+
+.navbar.open {
+  left: 0; /* Show the navbar when open */
 }
 
 .navbar ul {
   list-style-type: none; /* Remove bullet points */
   padding: 0; /* Remove padding */
-  display: flex; /* Change this to block or add flex-direction */
-  flex-direction: column; /* Add this line for vertical stacking */
+  margin: 0; /* Remove margin */
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Vertical stacking */
 }
 
 .navbar li {
-  margin: 10px 0; /* Space between items */
+  padding: 8px 16px; /* Space between items */
 }
 
-/* Reset traditional link styles */
-.navbar ul li a {
-  text-decoration: none;
-  color: black;
-  display: block; /* Ensures the a tag takes full space of li */
-  padding: 10px 15px;
+.navbar li a {
+  color: white; /* Link color */
+  text-decoration: none; /* Remove underline */
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Center items vertically */
+  font-size: large;
+  padding: 5px;
 }
 
-.navbar ul li {
-  list-style-type: none;
+.navbar li a:hover {
+  background-color: #575757; /* Light gray color on hover */
+}
+
+.navbar li a .nav-icon {
+  margin-right: 8px;
+}
+
+.menu-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 24px;
   cursor: pointer;
 }
 
-.navbar ul li:hover,
-.navbar ul li.active {
-  background-color: #e0e0e0; /* Light gray color on hover or click */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
 }
-
-/* Optional: Remove default margin/padding for a more compact menu */
-.navbar ul {
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.navbar ul li {
-  margin: 5px;
-}
-
 
 .game-container {
   flex-grow: 1; /* This will take the remaining space */

@@ -7,6 +7,7 @@ import SettingModal from './components/SettingModal';
 import useLocalStorage from './hooks/useLocalStorage';
 import StatsModal from './components/StatsModal';
 import useAlert from './hooks/useAlert';
+import BirthdayHeader from './components/BirthdayHeader';
 import {
   solution,
   solutionIndex,
@@ -162,6 +163,7 @@ function Wordle() {
         setIsSettingsModalOpen={setIsSettingsModalOpen}
         gameName="WORDLE"
       />
+      <BirthdayHeader />
       <Grid
         currentGuess={currentGuess}
         guesses={guesses}

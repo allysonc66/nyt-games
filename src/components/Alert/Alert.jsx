@@ -1,4 +1,4 @@
-import useAlert from 'hooks/useAlert';
+import useAlert from '../../hooks/useAlert';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import styles from './Alert.module.scss';
