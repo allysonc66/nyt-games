@@ -2,22 +2,24 @@ import { useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { FaLink, FaBolt, FaTable, FaQuoteLeft, FaBars, FaTimes } from "react-icons/fa";
 import "./App.css";
-import Connections from "./Connections"; // Assuming this is your existing game component
-import Strands from "./Strands"; // Placeholder for Strands game
-import TheMini from "./TheMini"; // Placeholder for The Mini game
-import Wordle from "./Wordle"; // Placeholder for Wordle game
+import Connections from "./Connections"; 
+import Strands from "./Strands"; 
+import TheMini from "./TheMini"; 
+import Wordle from "./Wordle"; 
+import BirthdayHeader from "./components/BirthdayHeader";
 
 const App = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
-    console.log("HERE", isDrawerOpen)
     setIsDrawerOpen(!isDrawerOpen);
   };
 
   return (
     <Router>
       <div className="App">
+        <h1>New York Times Games</h1>
+        <BirthdayHeader />
         <button className="menu-button" onClick={toggleDrawer}>
           <FaBars />
         </button>

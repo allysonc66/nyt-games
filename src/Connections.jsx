@@ -7,7 +7,6 @@ import InfoModal from "./components/InfoModal";
 import StatsModal from "./components/StatsModal";
 import SettingModal from "./components/SettingModal";
 import { addStatsForCompletedGame } from "./lib/words";
-import BirthdayHeader from "./components/BirthdayHeader";
 
 const MAX_GUESSES = 4;
 
@@ -52,7 +51,7 @@ const Connections = () => {
   const [correctGroups, setCorrectGroups] = useLocalStorage('correctGroupsConnections', []);
   const [answerKey, setAnswerKey] = useLocalStorage('answerKeyConnections', []);
   const [shake, setShake] = useState(false);
-  const [theme, setTheme] = useLocalStorage('theme', 'dark');
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
   const [isDarkMode, setIsDarkMode] = useState(theme === 'dark');
   const [isHighContrastMode, setIsHighContrastMode] = useState(highContrast);
   const [guesses, setGuesses] = useLocalStorage('guessesConnections', []);
@@ -177,7 +176,6 @@ const Connections = () => {
         setIsSettingsModalOpen={setIsSettingsModalOpen}
         gameName="CONNECTIONS"
       />
-      <BirthdayHeader />
       <InfoModal
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
@@ -252,6 +250,7 @@ const Connections = () => {
         isHardMode={false}
         guesses={guesses.length}
         showAlert={false}
+        gameName="CONNECTIONS"
       />
     </div>
   );

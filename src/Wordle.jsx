@@ -7,7 +7,6 @@ import SettingModal from './components/SettingModal';
 import useLocalStorage from './hooks/useLocalStorage';
 import StatsModal from './components/StatsModal';
 import useAlert from './hooks/useAlert';
-import BirthdayHeader from './components/BirthdayHeader';
 import {
   solution,
   solutionIndex,
@@ -28,7 +27,7 @@ function Wordle() {
     guesses: [],
     solutionIndex: '',
   });
-  const [theme, setTheme] = useLocalStorage('theme', 'dark');
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
   const [highContrast, setHighContrast] = useLocalStorage(
     'high-contrast',
     false
@@ -163,7 +162,6 @@ function Wordle() {
         setIsSettingsModalOpen={setIsSettingsModalOpen}
         gameName="WORDLE"
       />
-      <BirthdayHeader />
       <Grid
         currentGuess={currentGuess}
         guesses={guesses}
@@ -201,6 +199,7 @@ function Wordle() {
         isHardMode={isHardMode}
         guesses={guesses}
         showAlert={showAlert.showAlert}
+        gameName={'WORDLE'}
       />
     </div>
   );
