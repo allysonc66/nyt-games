@@ -5,6 +5,8 @@ import Keyboard from './components/Keyboard';
 import InfoModal from './components/InfoModal';
 import SettingModal from './components/SettingModal';
 import useLocalStorage from './hooks/useLocalStorage';
+import StatsModal from './components/StatsModal';
+import useAlert from './hooks/useAlert';
 import {
   solution,
   solutionIndex,
@@ -31,7 +33,7 @@ function Wordle() {
     false
   );
   const [hardMode, setHardMode] = useLocalStorage('hard-mode', false);
-  const [stats, setStats] = useLocalStorage('gameStats', {
+  const [stats, setStats] = useLocalStorage('gameStatsWordle', {
     winDistribution: Array.from(new Array(MAX_CHALLENGES), () => 0),
     gamesFailed: 0,
     currentStreak: 0,
@@ -53,6 +55,13 @@ function Wordle() {
   const [isHardMode, setIsHardMode] = useState(hardMode);
   const [isDarkMode, setIsDarkMode] = useState(theme === 'dark');
   const [isHighContrastMode, setIsHighContrastMode] = useState(highContrast);
+  let showAlert = useAlert();
+  if (!showAlert) {
+    showAlert = false
+  } else {
+    showAlert = showAlert.showAlert
+  }
+
 
   // Show welcome modal
   useEffect(() => {
@@ -151,6 +160,7 @@ function Wordle() {
         setIsInfoModalOpen={setIsInfoModalOpen}
         setIsStatsModalOpen={setIsStatsModalOpen}
         setIsSettingsModalOpen={setIsSettingsModalOpen}
+        gameName="WORDLE"
       />
       <Grid
         currentGuess={currentGuess}
@@ -167,6 +177,7 @@ function Wordle() {
       <InfoModal
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
+        gameName="WORDLE"
       />
       <SettingModal
         isOpen={isSettingsModalOpen}
@@ -177,6 +188,17 @@ function Wordle() {
         setIsHardMode={handleHardMode}
         setIsDarkMode={handleDarkMode}
         setIsHighContrastMode={handleHighContrastMode}
+      />
+      <StatsModal
+        isOpen={isStatsModalOpen}
+        onClose={() => setIsStatsModalOpen(false)}
+        gameStats={stats}
+        numberOfGuessesMade={guesses.length}
+        isGameWon={isGameWon}
+        isGameLost={isGameLost}
+        isHardMode={isHardMode}
+        guesses={guesses}
+        showAlert={showAlert.showAlert}
       />
     </div>
   );

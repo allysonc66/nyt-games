@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import CountDown from 'react-countdown';
 import Modal from '../Modal';
 import styles from './StatsModal.module.scss';
-import { shareStatus, tomorrow } from '../../lib/words';
+import { tomorrow } from '../../lib/words';
 
 const StatsModal = ({
   isOpen,
@@ -11,14 +11,7 @@ const StatsModal = ({
   numberOfGuessesMade,
   isGameWon,
   isGameLost,
-  isHardMode,
-  guesses,
-  showAlert,
 }) => {
-  const handleShare = () => {
-    shareStatus(guesses, isGameLost, isHardMode);
-    showAlert('Game copied to clipboard', 'success');
-  };
 
   return (
     <Modal title="Statistics" isOpen={isOpen} onClose={onClose}>
@@ -49,9 +42,6 @@ const StatsModal = ({
               daysInHours={true}
               className={styles.time}
             />
-          </div>
-          <div className={styles.share}>
-            <button onClick={handleShare}>Share</button>
           </div>
         </div>
       )}

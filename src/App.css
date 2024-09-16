@@ -39,7 +39,7 @@
 }
 
 .word.purple {
-  background-color: lightpurple;
+  background-color: rgb(255, 196, 255);
 }
 
 .word.green {
@@ -66,19 +66,45 @@
   gap: 10px;
 }
 
+.mistakes-remaining {
+  font-size: large;
+  color: var(--color-text-primary);
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+  padding-left: 5px;
+}
+
+.dot {
+  width: 10px; 
+  height: 10px; 
+  border-radius: 50%;
+  background-color: var(--color-text-primary);
+}
+
+.controls button {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc; 
+}
+
 /* Answer Key Styling */
 .answer-key {
   margin-top: 20px;
   display: flex;
+  flex-direction: column;
   gap: 10px;
+  font-size: large;
 }
 
 .answer-bubble {
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 15px;
   color: white;
   text-align: center;
-  width: 100px;
+  min-width: 100px;
 }
 
 .answer-bubble.blue {
@@ -91,7 +117,7 @@
 }
 
 .answer-bubble.purple {
-  background-color: lightpurple;
+  background-color: rgb(255, 196, 255);
 }
 
 .answer-bubble.green {
