@@ -8,11 +8,11 @@ import styles from "./styles/strands.css";
 
 const initialBoard = [
   ["L", "R", "E", "S", "B", "O", "L"],
-  ["I", "E", "S", "T", "F", "R", "F"],
-  ["C", "C", "E", "R", "H", "E", "N"],
-  ["O", "I", "I", "R", "N", "C", "W"],
+  ["I", "E", "S", "T", "F", "H", "F"],
+  ["C", "C", "E", "R", "C", "R", "N"],
+  ["O", "I", "I", "V", "N", "E", "W"],
   ["F", "R", "A", "O", "T", "O", "R"],
-  ["O", "L", "O", "V", "O", "P", "I"],
+  ["O", "L", "O", "R", "O", "P", "I"],
   ["H", "C", "L", "P", "C", "O", "B"],
   ["C", "A", "T", "E", "R", "N", "S"]
 ];

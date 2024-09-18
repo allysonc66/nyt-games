@@ -85,7 +85,7 @@ const StatsModal = ({
         )}
         {wordCount > 0 && wordCount < 7 && (
           <div style={{ fontSize: '24px', color: '#d6c0dd', fontWeight: 'bold', margin: '20px' }}>
-            Almost there! You've completed {wordCount} / 8 words.
+            Almost there! You've completed {wordCount} / 7 words.
           </div>
         )}
         {wordCount === 7 && (
