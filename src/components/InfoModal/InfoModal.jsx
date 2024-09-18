@@ -61,8 +61,18 @@ const InfoModal = ({ isOpen, onClose, gameName }) => {
           </h3>
         </Modal>
     )
+  case 'STRANDS':
+    return (
+      <Modal title={'How to play'} isOpen={isOpen} onClose={onClose}>
+          <h3>
+            Find theme words to fill the board
+          </h3>
+          <h3>These words stay highlighted in blue when found.</h3>
+          <h3>Drag letters to create words</h3>
+          <h3>Theme words fill the board entirely. No theme words overlap</h3>
+        </Modal>
+    )
   }
-  
 };
 
 export default InfoModal;

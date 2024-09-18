@@ -4,7 +4,6 @@ import './Header.module.scss';
 const Header = ({
   setIsInfoModalOpen,
   setIsStatsModalOpen,
-  setIsSettingsModalOpen,
   gameName,
 }) => {
   return (
@@ -18,9 +17,6 @@ const Header = ({
       <div>
         <button onClick={() => setIsStatsModalOpen(true)}>
           <BsBarChart size="1.6rem" color="var(--color-icon)" />
-        </button>
-        <button onClick={() => setIsSettingsModalOpen(true)}>
-          <BsGear size="1.6rem" color="var(--color-icon)" />
         </button>
       </div>
     </header>

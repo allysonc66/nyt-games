@@ -3,7 +3,6 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import StatsModal from "./components/StatsModal";
 import Header from "./components/Header";
 import InfoModal from "./components/InfoModal";
-import SettingModal from "./components/SettingModal";
 
 const start_of_word = ["0,0", "0,1", "0,4", "2,0", "2,3", "3,3", "4,0"]
 const numberings = {}
@@ -57,7 +56,6 @@ const TheMini = () => {
   const [theme, setTheme] = useLocalStorage('theme', 'light');
   const [isDarkMode, setIsDarkMode] = useState(theme === 'dark');
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
-  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
 
   const handleInputChange = (e, rowIndex, colIndex) => {
@@ -240,7 +238,6 @@ const TheMini = () => {
       <Header
         setIsInfoModalOpen={setIsInfoModalOpen}
         setIsStatsModalOpen={setIsStatsModalOpen}
-        setIsSettingsModalOpen={setIsSettingsModalOpen}
         gameName="THE MINI"
       />
       <InfoModal
@@ -248,16 +245,7 @@ const TheMini = () => {
         onClose={() => setIsInfoModalOpen(false)}
         gameName="THE MINI"
       />
-      <SettingModal
-        isOpen={isSettingsModalOpen}
-        onClose={() => setIsSettingsModalOpen(false)}
-        isHardMode={false}
-        isDarkMode={isDarkMode}
-        isHighContrastMode={isHighContrastMode}
-        setIsHardMode={false}
-        setIsDarkMode={handleDarkMode}
-        setIsHighContrastMode={handleHighContrastMode}
-      />
+      
       <StatsModal
         isOpen={isStatsModalOpen}
         onClose={() => setIsStatsModalOpen(false)}

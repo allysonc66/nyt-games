@@ -5,7 +5,6 @@ import useLocalStorage from './hooks/useLocalStorage';
 import useAlert from './hooks/useAlert';
 import InfoModal from "./components/InfoModal";
 import StatsModal from "./components/StatsModal";
-import SettingModal from "./components/SettingModal";
 import { addStatsForCompletedGame } from "./lib/words";
 
 const MAX_GUESSES = 4;
@@ -45,7 +44,6 @@ const Connections = () => {
   const [selectedWords, setSelectedWords] = useState([]);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false);
-  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isGameLost, setIsGameLost] = useState(false);
   const [isGameWon, setIsGameWon] = useState(false);
   const [correctGroups, setCorrectGroups] = useLocalStorage('correctGroupsConnections', []);
@@ -173,7 +171,6 @@ const Connections = () => {
       <Header
         setIsInfoModalOpen={setIsInfoModalOpen}
         setIsStatsModalOpen={setIsStatsModalOpen}
-        setIsSettingsModalOpen={setIsSettingsModalOpen}
         gameName="CONNECTIONS"
       />
       <InfoModal
@@ -230,16 +227,6 @@ const Connections = () => {
           <button onClick={handleRestart}>Restart Game</button>
         </div>
       )}
-      <SettingModal
-        isOpen={isSettingsModalOpen}
-        onClose={() => setIsSettingsModalOpen(false)}
-        isHardMode={false}
-        isDarkMode={isDarkMode}
-        isHighContrastMode={isHighContrastMode}
-        setIsHardMode={false}
-        setIsDarkMode={handleDarkMode}
-        setIsHighContrastMode={handleHighContrastMode}
-      />
       <StatsModal
         isOpen={isStatsModalOpen}
         onClose={() => setIsStatsModalOpen(false)}

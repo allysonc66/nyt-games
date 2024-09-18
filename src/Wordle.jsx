@@ -3,7 +3,6 @@ import Header from './components/Header';
 import Grid from './components/Grid';
 import Keyboard from './components/Keyboard';
 import InfoModal from './components/InfoModal';
-import SettingModal from './components/SettingModal';
 import useLocalStorage from './hooks/useLocalStorage';
 import StatsModal from './components/StatsModal';
 import useAlert from './hooks/useAlert';
@@ -51,7 +50,6 @@ function Wordle() {
   const [isGameLost, setIsGameLost] = useState(false);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false);
-  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isHardMode, setIsHardMode] = useState(hardMode);
   const [isDarkMode, setIsDarkMode] = useState(theme === 'dark');
   const [isHighContrastMode, setIsHighContrastMode] = useState(highContrast);
@@ -159,7 +157,6 @@ function Wordle() {
       <Header
         setIsInfoModalOpen={setIsInfoModalOpen}
         setIsStatsModalOpen={setIsStatsModalOpen}
-        setIsSettingsModalOpen={setIsSettingsModalOpen}
         gameName="WORDLE"
       />
       <Grid
@@ -178,16 +175,6 @@ function Wordle() {
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
         gameName="WORDLE"
-      />
-      <SettingModal
-        isOpen={isSettingsModalOpen}
-        onClose={() => setIsSettingsModalOpen(false)}
-        isHardMode={isHardMode}
-        isDarkMode={isDarkMode}
-        isHighContrastMode={isHighContrastMode}
-        setIsHardMode={handleHardMode}
-        setIsDarkMode={handleDarkMode}
-        setIsHighContrastMode={handleHighContrastMode}
       />
       <StatsModal
         isOpen={isStatsModalOpen}

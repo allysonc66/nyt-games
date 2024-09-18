@@ -1,0 +1,109 @@
+.crossword-container {
+    width: 100%; /* Adjust to fit the viewport width */
+    max-width: 500px; /* Set a maximum width for the container */
+    height: auto; /* Allow height to adjust based on content */
+    max-height: 600px; /* Set a maximum height for the container */
+    margin: auto; /* Center the container horizontally */
+    overflow: hidden; /* Prevent overflow */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  .header {
+    text-align: center; /* Center the text in the header if needed */
+    margin-bottom: 1rem; /* Space between the header and the next section */
+  }
+  
+  .riddle {
+    width: min(222px + 15vw, 474px);
+    height: fit-content;
+    border: 1px solid #bcbcbc;
+    border-radius: 8px;
+    margin-bottom: 0.5rem; /* Space between riddle and display word */
+  }
+  
+  .theme {
+    width: min(222px + 15vw, 474px);
+    height: 24px;
+    padding-top: 4px;
+    font-size: 14px;
+    background-color: #aedfee;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 10;
+  }
+  
+  .display-word {
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0.5rem 0;
+    border: none;
+  }
+  
+  .strands-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 0; /* Remove any additional space above the strands */
+  }
+  
+  .strands-board {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 20rem;
+    height: auto;
+    padding: 0.5rem;
+    margin-top: 0; /* Remove any additional space above the board */
+    box-sizing: border-box;
+  }
+  
+  .strands-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .strands-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .letter {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    border-radius: 50%;
+    padding: 1px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer; /* Show a pointer cursor to indicate it's clickable */
+  }
+  
+  .submit {
+    margin-top: 0.5rem;
+    min-width: 10em;
+    color: rgb(0, 0, 0);
+  }
+  
