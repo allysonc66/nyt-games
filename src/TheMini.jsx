@@ -19,14 +19,14 @@ const crosswordData = {
   clues: {
     across: [
       { number: 1, clue: "Opposite/Adjacent", answer: "TAN", directionName: "1 Across" },
-      { number: 4, clue: "Anxiety, stress, aggravation", answer: "AGITA", directionName: "4 Across" },
+      { number: 4, clue: "What feeding Mikko too many hats might give you", answer: "AGITA", directionName: "4 Across" },
       { number: 6, clue: "The creepiest man taught __ Euro", answer: "AP", directionName: "6 Across" },
-      { number: 7, clue: "Life's a ____", answer: "BEACH", directionName: "7 Across" },
+      { number: 7, clue: "The fourth best place for pickleball, the best for a tan!", answer: "BEACH", directionName: "7 Across" },
     ],
     down: [
-      { number: 2, clue: "Formed by 2 rays", answer: "ANGLE", directionName: "2 Down" },
-      { number: 3, clue: "A visual representation of data or a relationship between variables", answer: "GRAPH", directionName: "3 Down" },
-      { number: 5, clue: "Tic ___ Toe", answer: "TAC", directionName: "5 Down" },
+      { number: 2, clue: "It's acute or obtuse", answer: "ANGLE", directionName: "2 Down" },
+      { number: 3, clue: "X and Y are often shown here", answer: "GRAPH", directionName: "3 Down" },
+      { number: 5, clue: "Not tic or toe", answer: "TAC", directionName: "5 Down" },
     ]
   }
 };
