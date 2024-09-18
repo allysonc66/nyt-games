@@ -15,7 +15,7 @@ const Connections = () => {
     blue: { name: "U2 Songs", words: ["Desire", "Bad", "One", "Invisible"] },
     yellow: { name: "Circle Geometry Terms", words: ["Chord", "Arc", "Tangent", "Area"] },
     green: { name: "Words that mean 'Teach'", words: ["Illuminate", "Verse", "Coach", "Guide"] },
-    purple: { name: "Palindromes", words: ["Noon", "Mom", "Civic", "Level"] },
+    purple: { name: "Candies", words: ["Crunch", "Bounty", "Dots", "Milky Way"] },
   };
 
   // Create a list of words by flattening the categories
