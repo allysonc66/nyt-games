@@ -215,3 +215,75 @@
   flex-grow: 1; /* This will take the remaining space */
   padding: 20px;
 }
+
+.crossword-container {
+  text-align: center;
+}
+
+.crossword-grid table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.crossword-grid td {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.white-cell {
+  background-color: white;
+  border: 1px solid black;
+  position: relative;
+}
+
+.black-cell {
+  background-color: black;
+  border: 1px solid black;
+}
+
+.clue-number {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 12px;
+}
+
+.crossword-input {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0);
+  text-align: center;
+  font-size: 18px;
+  border: none;
+}
+
+.selected-clue {
+  margin-top: 20px;
+  font-size: 18px;
+  max-width: 250px;
+  margin-left: 35px;
+}
+
+.all-clues {
+  margin-top: 30px;
+}
+
+.all-clues h3 {
+  margin-bottom: 10px;
+}
+
+.all-clues ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.selected-cell {
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+.highlighted-cell {
+  background-color: lightblue;
+  border: 1px solid black;
+}

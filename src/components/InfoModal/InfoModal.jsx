@@ -53,6 +53,14 @@ const InfoModal = ({ isOpen, onClose, gameName }) => {
           <h3>Each puzzle has exactly one solution. Watch out for words that seem to belong to multiple categories!</h3>
         </Modal>
     )
+  case 'THE MINI':
+    return (
+      <Modal title={'How to play'} isOpen={isOpen} onClose={onClose}>
+          <h3>
+            A mini 5x5 crossword puzzle. Fill in all the words in the puzzle to win!
+          </h3>
+        </Modal>
+    )
   }
   
 };

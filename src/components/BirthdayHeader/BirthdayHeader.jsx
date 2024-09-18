@@ -1,4 +1,3 @@
-import { BsCake } from 'react-icons/bs';
 import './BirthdayHeader.module.scss';
 
 const Header = () => {

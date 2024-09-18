@@ -14,45 +14,65 @@ const StatsModal = ({
   gameName,
 }) => {
 
-  return (
-    <Modal title="Statistics" isOpen={isOpen} onClose={onClose}>
-      <div className={styles.statsBar}>
-        <StatItem label="Played" value={gameStats.totalGames} />
-        <StatItem label="Win Rate %" value={gameStats.successRate} />
-        <StatItem label="Current Streak" value={gameStats.currentStreak} />
-        <StatItem label="Best Streak" value={gameStats.bestStreak} />
-      </div>
+  switch (gameName) {
+    default:
+      return (
+        <Modal title="Statistics" isOpen={isOpen} onClose={onClose}>
+          <div className={styles.statsBar}>
+            <StatItem label="Played" value={gameStats.totalGames} />
+            <StatItem label="Win Rate %" value={gameStats.successRate} />
+            <StatItem label="Current Streak" value={gameStats.currentStreak} />
+            <StatItem label="Best Streak" value={gameStats.bestStreak} />
+          </div>
 
-      {gameName === "WORDLE" && ( // Conditional rendering based on gameName
-        <>
-          <h2>Guess Distribution</h2>
-          <div className={styles.winDistribution}>
-            {gameStats.winDistribution.map((value, i) => (
-              <Progress
-                key={i}
-                index={i}
-                currentDayStatRow={numberOfGuessesMade === i + 1}
-                size={90 * (value / Math.max(...gameStats.winDistribution))}
-                label={String(value)}
-              />
-            ))}
-          </div>
-        </>
-      )}
-      {(isGameWon || isGameLost) && (
-        <div className={styles.result}>
-          <div className={styles.countDown}>
-            <h2>Next game in</h2>
-            <CountDown
-              date={tomorrow}
-              daysInHours={true}
-              className={styles.time}
-            />
-          </div>
-        </div>
-      )}
-    </Modal>
-  );
+          {gameName === "WORDLE" && ( // Conditional rendering based on gameName
+            <>
+              <h2>Guess Distribution</h2>
+              <div className={styles.winDistribution}>
+                {gameStats.winDistribution.map((value, i) => (
+                  <Progress
+                    key={i}
+                    index={i}
+                    currentDayStatRow={numberOfGuessesMade === i + 1}
+                    size={90 * (value / Math.max(...gameStats.winDistribution))}
+                    label={String(value)}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+          {(isGameWon || isGameLost) && (
+            <div className={styles.result}>
+              <div className={styles.countDown}>
+                <h2>Next game in</h2>
+                <CountDown
+                  date={tomorrow}
+                  daysInHours={true}
+                  className={styles.time}
+                />
+              </div>
+            </div>
+          )}
+        </Modal>
+      );
+    case 'THE MINI':
+      return (
+        <Modal title="You won!" isOpen={isOpen} onClose={onClose}>
+          {(isGameWon || isGameLost) && (
+            <div className={styles.result}>
+              <div className={styles.countDown}>
+                <h2>Next game in</h2>
+                <CountDown
+                  date={tomorrow}
+                  daysInHours={true}
+                  className={styles.time}
+                />
+              </div>
+            </div>
+          )}
+        </Modal>
+      );
+  }
 };
 
 const StatItem = ({ label, value }) => {
