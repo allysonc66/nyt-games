@@ -79,17 +79,17 @@ const StatsModal = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <div style={{ textAlign: 'center' }}>
         {wordCount === 0 && (
-          <div style={{ fontSize: '24px', color: '#aedfee', fontWeight: 'bold', margin: '20px' }}>
+          <div style={{ fontSize: '24px', color: '#d6c0dd', fontWeight: 'bold', margin: '20px' }}>
             Time to get started!
           </div>
         )}
         {wordCount > 0 && wordCount < 7 && (
-          <div style={{ fontSize: '24px', color: '#aedfee', fontWeight: 'bold', margin: '20px' }}>
+          <div style={{ fontSize: '24px', color: '#d6c0dd', fontWeight: 'bold', margin: '20px' }}>
             Almost there! You've completed {wordCount} / 8 words.
           </div>
         )}
         {wordCount === 7 && (
-          <div style={{ fontSize: '24px', color: '#aedfee', fontWeight: 'bold', margin: '20px' }}>
+          <div style={{ fontSize: '24px', color: '#d6c0dd', fontWeight: 'bold', margin: '20px' }}>
             Congrats, you found 7/7 words!
           </div>
         )}

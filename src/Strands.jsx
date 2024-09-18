@@ -12,9 +12,9 @@ const initialBoard = [
   ["C", "C", "E", "R", "H", "E", "N"],
   ["O", "I", "I", "R", "N", "C", "W"],
   ["F", "R", "A", "O", "T", "O", "R"],
-  ["C", "L", "L", "V", "O", "P", "I"],
-  ["H", "O", "A", "P", "C", "O", "B"],
-  ["O", "C", "T", "E", "R", "N", "S"]
+  ["O", "L", "O", "V", "O", "P", "I"],
+  ["H", "C", "L", "P", "C", "O", "B"],
+  ["C", "A", "T", "E", "R", "N", "S"]
 ];
 
 const correctWords = [
@@ -143,7 +143,7 @@ export default function Strands() {
     if (correctWords.includes(chosenWord)) {
       letterElems.forEach(
         (e) =>
-          (document.getElementById(e.id).style.backgroundColor = "#aedfee")
+          (document.getElementById(e.id).style.backgroundColor = "#d6c0dd")
       );
       setFinalLines([...finalLines, ...lines]);
       setWordCount(wordCount + 1);
@@ -151,7 +151,7 @@ export default function Strands() {
     } else if (chosenWord === spangram) {
       letterElems.forEach(
         (e) =>
-          (document.getElementById(e.id).style.backgroundColor = "#f8cb2c")
+          (document.getElementById(e.id).style.backgroundColor = "#ADD8E6")
       );
       setSpangramLines(lines);
       setWordCount(wordCount + 1);
@@ -191,7 +191,7 @@ export default function Strands() {
               y1={line.y1}
               x2={line.x2}
               y2={line.y2}
-              stroke="#aedfee"
+              stroke="#d6c0dd"
               strokeWidth="8"
             />
           ))}
@@ -202,7 +202,7 @@ export default function Strands() {
               y1={line.y1}
               x2={line.x2}
               y2={line.y2}
-              stroke="#f8cb2c"
+              stroke="#ADD8E6"
               strokeWidth="8"
             />
           ))}
@@ -237,9 +237,9 @@ export default function Strands() {
                     onMouseUp={handleMouseUp}
                     style={{
                       backgroundColor: foundWords.includes(id)
-                        ? "#aedfee"
+                        ? "#d6c0dd"
                         : foundSpangram.includes(id)
-                        ? "#f8cb2c"
+                        ? "#ADD8E6"
                         : "none",
                     }}
                   >
