@@ -254,7 +254,7 @@ const TheMini = () => {
         isHardMode={false}
         isDarkMode={isDarkMode}
         isHighContrastMode={isHighContrastMode}
-        setIsHardMode={false}
+        setIsHardMode={() => {}}
         setIsDarkMode={handleDarkMode}
         setIsHighContrastMode={handleHighContrastMode}
       />
