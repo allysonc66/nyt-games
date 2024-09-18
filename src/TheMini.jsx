@@ -245,7 +245,6 @@ const TheMini = () => {
         onClose={() => setIsInfoModalOpen(false)}
         gameName="THE MINI"
       />
-      
       <StatsModal
         isOpen={isStatsModalOpen}
         onClose={() => setIsStatsModalOpen(false)}
