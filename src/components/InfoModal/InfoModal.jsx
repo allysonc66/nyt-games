@@ -67,7 +67,7 @@ const InfoModal = ({ isOpen, onClose, gameName }) => {
           <h3>
             Find theme words to fill the board
           </h3>
-          <h3>These words stay highlighted in blue when found.</h3>
+          <h3>These words stay highlighted in purple when found.</h3>
           <h3>Drag letters to create words</h3>
           <h3>Theme words fill the board entirely. No theme words overlap</h3>
         </Modal>
