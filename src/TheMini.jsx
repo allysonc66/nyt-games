@@ -7,6 +7,14 @@ import InfoModal from "./components/InfoModal";
 const start_of_word = ["0,0", "0,1", "0,4", "2,0", "2,3", "3,3", "4,0"]
 const numberings = {}
 
+const numbering = [
+  [1, 2, null, null, 3],
+  [null, null, null, null, null],
+  [4, null, null, 5, null],
+  [null, null, null, 6, null],
+  [7, null, null, null, null]
+]
+
 const crosswordData = {
   grid: [
     ["T", "A", "N", "", "G"],
@@ -14,6 +22,13 @@ const crosswordData = {
     ["A", "G", "I", "T", "A"],
     ["", "L", "", "A", "P"],
     ["B", "E", "A", "C", "H"],
+  ],
+  numbering: [
+    [1, 2, null, null, 3],
+    [null, null, null, null, null],
+    [4, null, null, 5, null],
+    [null, null, null, 6, null],
+    [7, null, null, null, null]
   ],
   clues: {
     across: [
@@ -128,38 +143,37 @@ const TheMini = () => {
         setDirection(newDirection);
       }
     }
-
-    const coordinate_string = `${rowIndex},${colIndex}`
-    let acrossClue = null;
-    let downClue = null;
-    if (start_of_word.includes(coordinate_string)) {
-      downClue = crosswordData.clues.down.find((clue) => clue.number === numberings[coordinate_string]);
-      acrossClue = crosswordData.clues.across.find((clue) => clue.number === numberings[coordinate_string]);
-    }
-    // Check which clue the selected cell is in by looking at the first non-null cell in the row
-    let startCol = 0
-    let startRow = 0
-    if (colIndex === 3) {
-      startCol = 2
-    }
-    if (rowIndex === 3) {
-      startRow = 3
-    }
-    const check_coordinate_string1 = `${startCol},${colIndex}`
-    const check_coordinate_string2 = `${rowIndex},${startRow}`
-    downClue = crosswordData.clues.down.find((clue) => clue.number === numberings[check_coordinate_string1]);
-    acrossClue = crosswordData.clues.across.find((clue) => clue.number === numberings[check_coordinate_string2]);
-
-    let chosenClue = "";
-    if (acrossClue && newDirection === "across") {
-      chosenClue = acrossClue;
-    } else if (downClue && newDirection === "down") {
-      chosenClue = downClue;
-    } else {
-      chosenClue = acrossClue || downClue;
-    }
-    setSelectedClue(chosenClue);
+    // Set selected clue
+    setClue(rowIndex, colIndex, newDirection);
   };
+
+  const setClue = (row, col, curDirection) => {
+    const { grid, numbering, clues } = crosswordData;
+    
+    if (curDirection === "across") {
+      // Find the leftmost numbered cell in the same row, that is not separated by an empty string
+      let startCol = col;
+      while (startCol > 0 && grid[row][startCol - 1] !== "") {
+        startCol--;
+      }
+      const clueNumber = numbering[row][startCol];
+      const selectedClue = clues.across.find(clue => clue.number === clueNumber);
+      setSelectedClue(selectedClue)
+    }
+  
+    if (curDirection === "down") {
+      // Find the topmost numbered cell in the same column, that is not separated by an empty string
+      let startRow = row;
+      while (startRow > 0 && grid[startRow - 1][col] !== "") {
+        startRow--;
+      }
+      const clueNumber = numbering[startRow][col];
+      const selectedClue = clues.down.find(clue => clue.number === clueNumber);
+      setSelectedClue(selectedClue)
+    }
+  
+    return null;
+  }
 
   // Check game winning or losing
   useEffect(() => {
