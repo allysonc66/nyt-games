@@ -5,15 +5,6 @@ import Header from "./components/Header";
 import InfoModal from "./components/InfoModal";
 
 const start_of_word = ["0,0", "0,1", "0,4", "2,0", "2,3", "3,3", "4,0"]
-const numberings = {}
-
-const numbering = [
-  [1, 2, null, null, 3],
-  [null, null, null, null, null],
-  [4, null, null, 5, null],
-  [null, null, null, 6, null],
-  [7, null, null, null, null]
-]
 
 const crosswordData = {
   grid: [
@@ -237,16 +228,6 @@ const TheMini = () => {
     return false;
   }
 
-  let clueNumber = 1;
-  const generateClueNumber = (row, col) => {
-    const coordinate = String(row) + "," + String(col);
-    if (start_of_word.includes(coordinate)) {
-      numberings[coordinate] = clueNumber;
-      return clueNumber++;
-    }
-    return null;
-  };
-
   return (
     <div className="crossword-container">
       <Header
@@ -277,7 +258,7 @@ const TheMini = () => {
             {crosswordData.grid.map((row, rowIndex) => (
               <tr key={rowIndex}>
                 {row.map((cell, colIndex) => {
-                  const clueNum = generateClueNumber(rowIndex, colIndex);
+                  const clueNum = crosswordData.numbering[rowIndex][colIndex];
                   const isSelected = selectedCell.row === rowIndex && selectedCell.col === colIndex;
                   return (
                     <td
