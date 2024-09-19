@@ -1,4 +1,4 @@
-import { BsBarChart, BsGear, BsInfoCircle } from 'react-icons/bs';
+import { BsBarChart, BsInfoCircle } from 'react-icons/bs';
 import './Header.module.scss';
 
 const Header = ({

@@ -1,10 +1,9 @@
 // components/Strands.js
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useLocalStorage from "./hooks/useLocalStorage";
 import StatsModal from "./components/StatsModal";
 import Header from "./components/Header";
 import InfoModal from "./components/InfoModal";
-import styles from "./styles/strands.css";
 
 const initialBoard = [
   ["L", "R", "E", "S", "B", "O", "L"],
