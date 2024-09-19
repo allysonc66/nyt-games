@@ -4,8 +4,6 @@ import StatsModal from "./components/StatsModal";
 import Header from "./components/Header";
 import InfoModal from "./components/InfoModal";
 
-const start_of_word = ["0,0", "0,1", "0,4", "2,0", "2,3", "3,3", "4,0"]
-
 const crosswordData = {
   grid: [
     ["T", "A", "N", "", "G"],
@@ -40,10 +38,6 @@ const TheMini = () => {
   const [userGrid, setUserGrid] = useLocalStorage("miniUserGrid",
     Array(5).fill(null).map(() => Array(5).fill(""))
   );
-  const [highContrast, setHighContrast] = useLocalStorage(
-    'high-contrast',
-    false
-  );
   const [stats, setStats] = useLocalStorage('gameStatsMini', {
     winDistribution: Array.from(new Array(0), () => 0),
     gamesFailed: 0,
@@ -57,10 +51,7 @@ const TheMini = () => {
   const [direction, setDirection] = useState("across");
   const [isGameWon, setIsGameWon] = useState(false);
   const inputRefs = useRef(Array(5).fill(null).map(() => Array(5).fill(null)));
-  const [isHighContrastMode, setIsHighContrastMode] = useState(highContrast);
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false);
-  const [theme, setTheme] = useLocalStorage('theme', 'light');
-  const [isDarkMode, setIsDarkMode] = useState(theme === 'dark');
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
 
 
@@ -97,16 +88,6 @@ const TheMini = () => {
         setSelectedCell({ row: rowIndex + 1, col: colIndex });
       }
     }
-  };
-
-  const handleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    setTheme(isDarkMode ? 'light' : 'dark');
-  };
-
-  const handleHighContrastMode = () => {
-    setIsHighContrastMode(!isHighContrastMode);
-    setHighContrast(!isHighContrastMode);
   };
 
   const handleCellClick = (rowIndex, colIndex) => {
