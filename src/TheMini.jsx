@@ -22,7 +22,7 @@ const crosswordData = {
   clues: {
     across: [
       { number: 1, clue: "Opposite/Adjacent", answer: "TAN", directionName: "1 Across" },
-      { number: 4, clue: "What feeding Mikko too many hats might give you", answer: "AGITA", directionName: "4 Across" },
+      { number: 4, clue: "What seeing Mikko with another hat might give you", answer: "AGITA", directionName: "4 Across" },
       { number: 6, clue: "The creepiest man taught __ Euro", answer: "AP", directionName: "6 Across" },
       { number: 7, clue: "The fourth best place for pickleball, the best for a tan!", answer: "BEACH", directionName: "7 Across" },
     ],
