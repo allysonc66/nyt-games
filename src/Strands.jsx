@@ -1,9 +1,10 @@
 // components/Strands.js
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import useLocalStorage from "./hooks/useLocalStorage";
 import StatsModal from "./components/StatsModal";
 import Header from "./components/Header";
 import InfoModal from "./components/InfoModal";
+import "./styles/strands.css";
 
 const initialBoard = [
   ["L", "R", "E", "S", "B", "O", "L"],
@@ -134,6 +135,68 @@ export default function Strands() {
     setLetterElems([]);
     setSelectedWord("");
   }
+  
+  function handleStart(e) {
+    e.preventDefault();
+    setDragging(true);
+    setSelectedWord("");
+    const target = e.targetTouches ? e.targetTouches[0].target : e.currentTarget;
+    setLetterElems([target]);
+    setDraggedLetters([target.id]);
+    target.classList.add("strands-selected");
+  }
+
+  function handleMove(e) {
+    if (dragging) {
+      const target = e.targetTouches ? document.elementFromPoint(e.targetTouches[0].clientX, e.targetTouches[0].clientY) : e.currentTarget;
+      if (!target || !target.classList.contains("letter")) return;
+
+      const newLetter = target.id;
+      if (draggedLetters.includes(newLetter)) {
+        const newDraggedLetters = [...draggedLetters];
+        newDraggedLetters.pop();
+        setDraggedLetters(newDraggedLetters);
+        letterElems[letterElems.length - 1]?.classList.remove("strands-selected");
+        const newLetterElems = [...letterElems];
+        newLetterElems.pop();
+        setLetterElems(newLetterElems);
+        setSelectedWord(
+          newDraggedLetters
+            .map((id) => document.getElementById(id)?.innerText)
+            .join("")
+        );
+        const newLines = [...lines];
+        newLines.pop();
+        setLines(newLines);
+      } else {
+        const newDraggedLetters = [...draggedLetters, newLetter];
+        setLetterElems([...letterElems, target]);
+        setDraggedLetters(newDraggedLetters);
+        target.classList.add("strands-selected");
+        setSelectedWord(
+          newDraggedLetters
+            .map((id) => document.getElementById(id)?.innerText)
+            .join("") + target.innerText
+        );
+      }
+    } else {
+      letterElems.forEach((e) => e.classList.remove("strands-selected"));
+    }
+  }
+
+  function handleEnd() {
+    setDragging(false);
+    setSelectedWord(
+      draggedLetters
+        .map((id) => document.getElementById(id)?.innerText)
+        .join("")
+    );
+    checkWord();
+    letterElems.forEach((e) => e.classList.remove("strands-selected"));
+    setDraggedLetters([]);
+    setLetterElems([]);
+    setSelectedWord("");
+  }
 
   function checkWord() {
     const chosenWord = draggedLetters
@@ -234,6 +297,9 @@ export default function Strands() {
                     onMouseDown={handleMouseDown}
                     onMouseOver={handleMouseOver}
                     onMouseUp={handleMouseUp}
+                    onTouchStart={handleStart}
+                    onTouchMove={handleMove}
+                    onTouchEnd={handleEnd}
                     style={{
                       backgroundColor: foundWords.includes(id)
                         ? "#d6c0dd"
