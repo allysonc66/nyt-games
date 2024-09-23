@@ -89,7 +89,6 @@ const Connections = () => {
         setCorrectGroups([...correctGroups, ...selectedWords]);
         setAnswerKey([...answerKey, category]); // Add the category to the answer key
         setSelectedWords([]);
-        setStats(addStatsForCompletedGame(stats, guesses.length));
       } else {
         // Check if the guess has already been made
         const guessTexts = selectedWords.map(word => word.text).sort().join(',');

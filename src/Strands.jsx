@@ -4,7 +4,7 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import StatsModal from "./components/StatsModal";
 import Header from "./components/Header";
 import InfoModal from "./components/InfoModal";
-import "./styles/strands.css";
+import styles from "./styles/strands.css";
 
 const initialBoard = [
   ["L", "R", "E", "S", "B", "O", "L"],

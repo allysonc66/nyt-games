@@ -74,28 +74,45 @@ const StatsModal = ({
         </Modal>
       );
     case 'STRANDS':
-      case 'STRANDS':
-  return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <div style={{ textAlign: 'center' }}>
-        {wordCount === 0 && (
-          <div style={{ fontSize: '24px', color: '#d6c0dd', fontWeight: 'bold', margin: '20px' }}>
-            Time to get started!
+      return (
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <div style={{ textAlign: 'center' }}>
+            {wordCount === 0 && (
+              <div style={{ fontSize: '24px', color: '#d6c0dd', fontWeight: 'bold', margin: '20px' }}>
+                Time to get started!
+              </div>
+            )}
+            {wordCount > 0 && wordCount < 7 && (
+              <div style={{ fontSize: '24px', color: '#d6c0dd', fontWeight: 'bold', margin: '20px' }}>
+                Almost there! You've completed {wordCount} / 7 words.
+              </div>
+            )}
+            {wordCount === 7 && (
+              <div style={{ fontSize: '24px', color: '#d6c0dd', fontWeight: 'bold', margin: '20px' }}>
+                Congrats, you found 7/7 words!
+              </div>
+            )}
           </div>
-        )}
-        {wordCount > 0 && wordCount < 7 && (
-          <div style={{ fontSize: '24px', color: '#d6c0dd', fontWeight: 'bold', margin: '20px' }}>
-            Almost there! You've completed {wordCount} / 7 words.
-          </div>
-        )}
-        {wordCount === 7 && (
-          <div style={{ fontSize: '24px', color: '#d6c0dd', fontWeight: 'bold', margin: '20px' }}>
-            Congrats, you found 7/7 words!
-          </div>
-        )}
-      </div>
-    </Modal>
-  );
+        </Modal>
+      );
+      case 'CONNECTIONS':
+        const title = isGameWon ? "You won!" : "You lost :("
+        return (
+          <Modal title={title} isOpen={isOpen} onClose={onClose}>
+            {(isGameWon || isGameLost) && (
+              <div className={styles.result}>
+                <div className={styles.countDown}>
+                  <h2>Next game in</h2>
+                  <CountDown
+                    date={tomorrow}
+                    daysInHours={true}
+                    className={styles.time}
+                  />
+                </div>
+              </div>
+            )}
+          </Modal>
+        );
 
   }
 };
