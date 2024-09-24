@@ -27,7 +27,7 @@ const Connections = () => {
   const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
 
   // State for shuffled words, selected words, correct groups, and the answer key
-  const [highContrast, setHighContrast] = useLocalStorage(
+  const [highContrast] = useLocalStorage(
     'high-contrast',
     false
   );
@@ -49,9 +49,9 @@ const Connections = () => {
   const [correctGroups, setCorrectGroups] = useLocalStorage('correctGroupsConnections', []);
   const [answerKey, setAnswerKey] = useLocalStorage('answerKeyConnections', []);
   const [shake, setShake] = useState(false);
-  const [theme, setTheme] = useLocalStorage('theme', 'light');
-  const [isDarkMode, setIsDarkMode] = useState(theme === 'dark');
-  const [isHighContrastMode, setIsHighContrastMode] = useState(highContrast);
+  const [theme] = useLocalStorage('theme', 'light');
+  const [isDarkMode] = useState(theme === 'dark');
+  const [isHighContrastMode] = useState(highContrast);
   const [guesses, setGuesses] = useLocalStorage('guessesConnections', []);
   let showAlert = useAlert();
   if (!showAlert) {
@@ -138,16 +138,6 @@ const Connections = () => {
       document.body.setAttribute('data-mode', 'high-contrast');
     else document.body.removeAttribute('data-mode');
   }, [isDarkMode, isHighContrastMode]);
-
-  const handleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    setTheme(isDarkMode ? 'light' : 'dark');
-  };
-
-  const handleHighContrastMode = () => {
-    setIsHighContrastMode(!isHighContrastMode);
-    setHighContrast(!isHighContrastMode);
-  };
 
   // Handle shuffle
   const handleShuffle = () => {

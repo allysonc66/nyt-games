@@ -1,10 +1,9 @@
 // components/Strands.js
-import { useState, useRef, useEffect } from "react";
-import useLocalStorage from "./hooks/useLocalStorage";
+import { useState, useEffect } from "react";
 import StatsModal from "./components/StatsModal";
 import Header from "./components/Header";
 import InfoModal from "./components/InfoModal";
-import styles from "./styles/strands.css";
+import "./styles/strands.css";
 
 const initialBoard = [
   ["L", "R", "E", "S", "B", "O", "L"],
@@ -39,19 +38,10 @@ export default function Strands() {
   const [wordCount, setWordCount] = useState(0);
   const [foundWords, setFoundWords] = useState([]);
   const [foundSpangram, setFoundSpangram] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [done, setDone] = useState(false);
 
-  const [stats, setStats] = useState('gameStatsMini', {
-    winDistribution: Array.from(new Array(0), () => 0),
-    gamesFailed: 0,
-    currentStreak: 0,
-    bestStreak: 0,
-    totalGames: 0,
-    successRate: 0,
-  });
-  const [isGameWon, setIsGameWon] = useState(false);
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false);
-  const [theme, setTheme] = useLocalStorage('theme', 'light');
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   useEffect(() => {
     if (dragging && letterElems.length > 1) {

@@ -29,3 +29,11 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `npm run eject`
+
+## Future Improvements
+- Add stats to The Mini, Strands, and Connections
+- Fix CSS to look nice on phone and desktop
+- Add logic to rotate The Mini, Strands, and Connections every day
+- Add sharing option on the stats modal
+- Make a nicer home page
+- Fix bug on Strands where the last letter appears twice
